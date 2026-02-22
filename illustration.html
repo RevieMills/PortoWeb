@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Illustration Portfolio</title>
+    <style>
+        :root {
+            --primary-red: #E96666; 
+            --bg-white: #ffffff;
+            --text-black: #000000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-black);
+            font-family: 'Inter', sans-serif;
+            padding: 40px 8%;
+        }
+
+        /* --- NAVBAR AREA --- */
+        header {
+            border-bottom: 2px solid var(--primary-red);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .logo-box h1 {
+            color: var(--primary-red);
+            font-size: 28px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .nav-links { display: flex; gap: 30px; }
+        .nav-links a { 
+            color: var(--text-black); 
+            text-decoration: none; 
+            font-size: 14px;
+        }
+
+        /* --- TITLE AREA --- */
+        .page-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        /* --- PINTEREST / MASONRY LAYOUT --- */
+        /* Menggunakan Column-count agar gambar tersusun rapi ke bawah */
+        .masonry-wrapper {
+            column-count: 3; /* Jumlah kolom */
+            column-gap: 15px;
+            width: 100%;
+        }
+
+        .masonry-item {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 15px;
+            background-color: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .masonry-item:hover {
+            transform: scale(1.02);
+            cursor: zoom-in;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            height: auto; /* Penting: agar mengikuti aspect ratio asli */
+        }
+
+        /* Responsive: Kolom berkurang di layar kecil */
+        @media (max-width: 900px) { .masonry-wrapper { column-count: 2; } }
+        @media (max-width: 600px) { .masonry-wrapper { column-count: 1; } }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-box">
+            <h1 onclick="window.location.href='home.html'" style="cursor:pointer;">Portfolio</h1>
+        </div>
+        <div class="nav-links">
+            <a href="illustration.html" style="font-weight: bold;">Illustration</a>
+            <a href="#">3D</a>
+            <a href="#">Animation</a>
+            <a href="#">Character Design</a>
+        </div>
+    </header>
+
+    <h2 class="page-title">Illustration</h2>
+
+    <div class="masonry-wrapper">
+        <div class="masonry-item">
+            <img src="mockup.png" alt="Work 1">
+        </div>
+        <div class="masonry-item">
+            <img src="pixil-frame-0.png" alt="Work 2">
+        </div>
+        <div class="masonry-item">
+            <img src="mockup.png" alt="Work 3">
+        </div>
+        <div class="masonry-item">
+            <img src="mmockup.png" alt="Work 4">
+        </div>
+        <div class="masonry-item">
+            <img src="pixil-frame-0.png" alt="Work 5">
+        </div>
+        <div class="masonry-item">
+            <img src="pixil-frame-0.png" alt="Work 6">
+        </div>
+        </div>
+
+</body>
+</html>

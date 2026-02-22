@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <title>Student Portfolio - Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        :root {
+            --primary-red: #E96666; 
+            --bg-black: #000000;
+            --text-white: #ffffff;
+            --soft-gray: #D9D9D9;
+            --light-bg: #F2F2F2;
+        }
+
+        /* Smooth Scroll ditambahkan di sini agar navigasi mulus */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            scroll-behavior: smooth; 
+        }
+
+        body {
+            background-color: var(--bg-black);
+            color: var(--text-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR & CAROUSEL --- */
+        nav { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 30px 8%; 
+            position: sticky; /* Membuat navbar tetap di atas saat scroll */
+            top: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+        }
+        .logo-box span { display: block; font-size: 10px; letter-spacing: 6px; color: var(--primary-red); margin-bottom: 5px; }
+        .logo-box h1 { font-size: 24px; letter-spacing: 2px; font-family: "Kosugi Maru";}
+        .nav-links { display: flex; gap: 40px; }
+        .nav-links a { color: var(--primary-red); text-decoration: none; font-size: 13px; font-weight: 500; }
+
+        .swiper { width: 85%; height: 500px; margin: 30px auto; border: 1px solid rgba(255,255,255,0.1); }
+        .swiper-slide { background: #111; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #444; }
+
+        /* --- PROFILE --- */
+        .profile-container { display: flex; align-items: center; justify-content: center; gap: 50px; padding: 100px 10%; opacity: 0; transform: translateY(30px); transition: 1s; }
+        .profile-container.show { opacity: 1; transform: translateY(0); }
+        .profile-image { width: 280px; height: 340px; background-color: var(--soft-gray); border-radius: 35px; flex-shrink: 0; }
+        .profile-text { max-width: 450px; }
+        .profile-text h1 { font-size: 36px; margin-bottom: 5px; }
+        .profile-text h3 { font-size: 13px; letter-spacing: 4px; margin-bottom: 20px; color: #eee; }
+        .profile-text p { font-size: 13px; line-height: 1.7; color: #bbb; margin-bottom: 15px; }
+        
+        .red-line { width: 80%; height: 4px; background-color: var(--primary-red); margin: 30px auto 60px; border-radius: 10px; transform: scaleX(0); transition: 1.2s ease-in-out; }
+        .red-line.show { transform: scaleX(1); }
+
+        /* --- PORTFOLIO SECTION --- */
+        .portfolio-section { background-color: var(--light-bg); color: #000; padding: 80px 10%; text-align: center; opacity: 0; transform: translateY(30px); transition: 1s; }
+        .portfolio-section.show { opacity: 1; transform: translateY(0); }
+        .portfolio-title { font-size: 24px; letter-spacing: 12px; margin-bottom: 40px; text-transform: uppercase; }
+        .grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; max-width: 800px; margin: 0 auto; }
+        .grid-item { position: relative; background-color: #ccc; overflow: hidden; display: flex; cursor: pointer; height: 180px; transition: 0.3s; }
+        .grid-item:hover { filter: brightness(0.8); }
+        .grid-item.large { grid-column: span 2; height: 260px; }
+        .overlay-text { position: absolute; bottom: 20px; left: 20px; font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- ABILITY SECTION --- */
+        .ability-section { padding: 100px 10% 120px; background-color: var(--bg-black); opacity: 0; transition: 1s; display: flex; flex-direction: column; align-items: center; }
+        .ability-section.show { opacity: 1; }
+        .ability-header h2 { color: var(--primary-red); font-size: 32px; letter-spacing: 5px; margin-bottom: 60px; text-align: center; text-transform: uppercase; }
+        .ability-content { display: flex; width: 100%; max-width: 1000px; justify-content: space-between; align-items: center; gap: 40px; }
+        .chart-list { flex: 1; display: flex; flex-direction: column; gap: 25px; }
+        .ability-item { display: flex; flex-direction: column; gap: 8px; }
+        .ability-label { font-size: 14px; color: var(--text-white); letter-spacing: 1px; }
+        .bar-bg { width: 100%; height: 20px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; width: 0%; background-color: var(--primary-red); border-radius: 4px; transition: width 1.5s cubic-bezier(0.17, 0.67, 0.83, 0.67); cursor: pointer; }
+        .bar-fill:hover { background-color: #ff8585; }
+        .description-box { width: 300px; font-size: 13px; color: #888; line-height: 1.6; padding-left: 20px; border-left: 1px solid #333; min-height: 100px; display: flex; align-items: center; opacity: 0.8; }
+        #hover-desc { transition: opacity 0.3s ease; }
+
+        /* --- FOOTER --- */
+        footer { background-color: var(--primary-red); color: var(--text-white); padding: 60px 0; text-align: center; width: 100%; margin-top: 50px; opacity: 0; transition: 1s; }
+        footer.show { opacity: 1; }
+        .footer-content p { font-size: 14px; letter-spacing: 3px; font-weight: 300; text-transform: lowercase; opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-box"><span>STUDENT</span><h1>PORTFOLIO</h1></div>
+        <div class="nav-links">
+            <a href="#profile">Profile</a>
+            <a href="#portfolios">Portfolios</a>
+            <a href="#ability">Ability</a>
+        </div>
+    </nav>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src=image/swiper1.png></div>
+            <div class="swiper-slide"><img src=image/swiper2.png></div>
+            <div class="swiper-slide"><img src=image/swiper3.png></div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <section id="profile" class="profile-container">
+        <div class="profile-image"><img src=image/profile.png></div>
+        <div class="profile-text">
+            <h1>盧佩雲</h1><h3>113AC2020</h3>
+            <p>Mainly do Illustrations and currently working on other design skills.</p>
+            <p>See my further works at Instagram | <a href="#" style="color:white; font-weight:bold; text-decoration:none; border-bottom: 2px solid var(--primary-red);">@cloudy_rin_</a></p>
+
+        </div>
+    </section>
+
+    <div class="red-line"></div>
+
+    <section id="portfolios" class="portfolio-section">
+        <h1 class="portfolio-title">P O R T F O L I O s</h1>
+        <div class="grid-container">
+            <div class="grid-item large" onclick="window.location.href='portfolio-detail.html#illustration'">
+                <div><img src="image/cov1.png"></div>
+                <div class="overlay-text">Illustration</div>
+            </div>
+            <div class="grid-item" onclick="window.location.href='portfolio-detail.html#3d'">
+                <div><img src="image/cov3.png"></div>
+                <div class="overlay-text">3D</div>
+            </div>
+            <div class="grid-item" onclick="window.location.href='portfolio-detail.html#animation'">
+                <div><img src="image/cov4.png"></div>
+                <div class="overlay-text">Animation</div>
+            </div>
+            <div class="grid-item large" onclick="window.location.href='portfolio-detail.html#character'">
+                <div><img src="image/cov2.png"></div>
+                <div class="overlay-text">Character Design</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ability" class="ability-section">
+        <div class="ability-header"><h2>CURRENT ABILITY</h2></div>
+        <div class="ability-content">
+            <div class="chart-list">
+                <div class="ability-item">
+                    <div class="ability-label">Illustration</div>
+                    <div class="bar-bg"><div class="bar-fill" data-w="95%" data-info="Main skill is Illustration. I'm okay with drawing background."></div></div>
+                </div>
+                <div class="ability-item">
+                    <div class="ability-label">3D</div>
+                    <div class="bar-bg"><div class="bar-fill" data-w="20%" data-info="Still learning Blender but I'm okay with simple things and by the help of tutorials."></div></div>
+                </div>
+                <div class="ability-item">
+                    <div class="ability-label">Animation</div>
+                    <div class="bar-bg"><div class="bar-fill" data-w="30%" data-info="I can do simple short animation and also basic for AE."></div></div>
+                </div>
+                <div class="ability-item">
+                    <div class="ability-label">Character Design</div>
+                    <div class="bar-bg"><div class="bar-fill" data-w="80%" data-info="Love to do character designing I can draw decent anatomy."></div></div>
+                </div>
+                <div class="ability-item">
+                    <div class="ability-label">Coding</div>
+                    <div class="bar-bg"><div class="bar-fill" data-w="10%" data-info="Mostly use AI for help."></div></div>
+                </div>
+            </div>
+            <div class="description-box">
+                <p id="hover-desc">Description come out when each chart is hovered</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>copyright all right reserved</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Swiper Init
+        new Swiper(".mySwiper", { loop: true, speed: 1200, autoplay: { delay: 3500 }, pagination: { el: ".swiper-pagination", clickable: true } });
+
+        // Scroll Animation Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    if (entry.target.classList.contains('ability-section')) {
+                        const bars = entry.target.querySelectorAll('.bar-fill');
+                        bars.forEach(bar => { bar.style.width = bar.getAttribute('data-w'); });
+                    }
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.profile-container, .red-line, .portfolio-section, .ability-section, footer').forEach(el => observer.observe(el));
+
+        // Hover Description Logic
+        const descText = document.getElementById('hover-desc');
+        const defaultText = "Description come out when each chart is hovered";
+
+        document.querySelectorAll('.bar-fill').forEach(bar => {
+            bar.addEventListener('mouseenter', () => {
+                descText.style.opacity = 0;
+                setTimeout(() => {
+                    descText.innerText = bar.getAttribute('data-info');
+                    descText.style.opacity = 1;
+                    descText.style.color = "var(--primary-red)";
+                }, 150);
+            });
+            bar.addEventListener('mouseleave', () => {
+                descText.style.opacity = 0;
+                setTimeout(() => {
+                    descText.innerText = defaultText;
+                    descText.style.opacity = 0.8;
+                    descText.style.color = "#888";
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

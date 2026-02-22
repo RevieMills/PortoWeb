@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-red: #E96666; 
+            --bg-white: #ffffff;
+            --text-black: #000000;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-white);
+            color: var(--text-black);
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* --- STICKY NAVBAR (Sesuai image_b10fe8.png) --- */
+        .sticky-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: white;
+            z-index: 1000;
+            padding: 20px 5%;
+            border-bottom: 2px solid var(--primary-red);
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn {
+            background: var(--primary-red);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            margin-right: 20px;
+        }
+
+        .logo-text {
+            line-height: 1;
+            flex-grow: 1;
+        }
+
+        .logo-text span { font-size: 10px; letter-spacing: 4px; color: var(--primary-red); display: block; }
+        .logo-text h1 { font-size: 22px; font-family: "Kosugi Maru"; text-transform: uppercase; }
+
+        .nav-categories { display: flex; gap: 25px; }
+        .nav-categories a { 
+            text-decoration: none; 
+            color: var(--text-black); 
+            font-size: 13px; 
+            font-weight: 500;
+        }
+
+        /* --- CONTENT AREA --- */
+        .content-wrapper { padding-top: 120px; padding-bottom: 50px; }
+
+        .section-container {
+            width: 90%;
+            margin: 0 auto 80px auto;
+        }
+
+        .category-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            display: inline-block;
+            min-width: 200px;
+        }
+
+        /* --- MASONRY GRID (Pinterest Style) --- */
+        .masonry-grid {
+            column-count: 3;
+            column-gap: 15px;
+            margin-top: 20px;
+        }
+
+        .masonry-item {
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 15px;
+            background-color: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .masonry-item img {
+            width: 100%;
+            display: block;
+            height: auto;
+        }
+
+        /* Footer Merah */
+        footer {
+            background-color: var(--primary-red);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) { .masonry-grid { column-count: 2; } }
+        @media (max-width: 600px) { .masonry-grid { column-count: 1; } }
+
+    </style>
+</head>
+<body>
+
+    <header class="sticky-nav">
+        <a href="home.html" class="back-btn">←</a>
+        <div class="logo-text">
+            <span>STUDENT</span>
+            <h1>PORTFOLIO</h1>
+        </div>
+        <nav class="nav-categories">
+            <a href="#illustration">Illustration</a>
+            <a href="#3d">3D</a>
+            <a href="#animation">Animation</a>
+            <a href="#character">Character Design</a>
+        </nav>
+    </header>
+
+    <div class="content-wrapper">
+        
+        <section id="illustration" class="section-container">
+            <h2 class="category-title">Illustration</h2>
+            <div class="masonry-grid">
+                <div class="masonry-item"><img src="image/a1.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a2.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a3.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a5.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a6.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a7.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a8.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a9.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a10.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a11.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a12.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a13.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a14.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a15.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a16.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a17.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a18.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a19.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a20.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a21.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a22.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a23.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a24.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a25.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a26.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a27.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a28.png" alt=""></div>
+                <div class="masonry-item"><img src="image/a29.png" alt=""></div>
+            </div>
+        </section>
+
+        <section id="3d" class="section-container">
+            <h2 class="category-title">3D</h2>
+            <div class="masonry-grid">
+                <div class="masonry-item"><img src="image/b1.png" alt=""></div>
+                <div class="masonry-item"><img src="image/b2.png" alt=""></div>
+                
+        </section>
+
+        
+<section id="animation" class="section-container">
+    <h2 class="category-title">Animation</h2>
+    <div class="masonry-grid">
+        
+        <div class="masonry-item">
+            <video width="100%" autoplay loop muted playsinline style="display: block; border-radius: 4px;">
+                <source src="video/v1.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="masonry-item">
+            <video width="100%" autoplay loop muted playsinline style="display: block; border-radius: 4px;">
+                <source src="video/v2.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="masonry-item">
+            <video width="100%" autoplay loop muted playsinline style="display: block; border-radius: 4px;">
+                <source src="video/v3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="masonry-item">
+            <video width="100%" autoplay loop muted playsinline style="display: block; border-radius: 4px;">
+                <source src="video/v4.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="masonry-item">
+            <video width="100%" autoplay loop muted playsinline style="display: block; border-radius: 4px;">
+                <source src="video/v5.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="masonry-item">
+            <video width="100%" autoplay loop muted playsinline style="display: block; border-radius: 4px;">
+                <source src="video/v6.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="masonry-item">
+            <video width="100%" autoplay loop muted playsinline style="display: block; border-radius: 4px;">
+                <source src="video/v7.mp4" type="video/mp4">
+            </video>
+        </div>
+        
+        <div class="masonry-item">
+            <img src="https://via.placeholder.com/400x400" alt="">
+        </div>
+
+    </div>
+</section>
+
+        <section id="character" class="section-container">
+            <h2 class="category-title">Character Design</h2>
+            <div class="masonry-grid">
+                <div class="masonry-item"><img src="image/c1.png" alt=""></div>
+                <div class="masonry-item"><img src="image/c2.png" alt=""></div>
+                <div class="masonry-item"><img src="image/c3.png" alt=""></div>
+                <div class="masonry-item"><img src="image/c4.png" alt=""></div>
+                <div class="masonry-item"><img src="image/c5.png" alt=""></div>
+                <div class="masonry-item"><img src="image/c6.png" alt=""></div>
+                <div class="masonry-item"><img src="image/c8.png" alt=""></div>
+                 <div class="masonry-item"><img src="image/c9.png" alt=""></div>
+                  <div class="masonry-item"><img src="image/c10.png" alt=""></div>
+                   <div class="masonry-item"><img src="image/c11.png" alt=""></div>
+                    <div class="masonry-item"><img src="image/c12.png" alt=""></div>
+                     <div class="masonry-item"><img src="image/c13.png" alt=""></div>
+                    <div class="masonry-item"><img src="image/c14.png" alt=""></div> 
+                    <div class="masonry-item"><img src="image/c15.png" alt=""></div>
+                    <div class="masonry-item"><img src="image/c16.png" alt=""></div>
+                    
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer>
+        copyright all right reserved
+    </footer>
+
+</body>
+</html>
